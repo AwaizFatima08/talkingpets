@@ -10,7 +10,7 @@ Copy-paste material for creating the app in Play Console. Everything here matche
 | App icon 512×512 | `store-assets/icon-512.png` |
 | Feature graphic 1024×500 | `store-assets/feature-graphic-1024x500.png` |
 | Phone screenshots (720×1440) | `store-assets/screenshots/phone/` (5) |
-| Privacy policy URL | https://awaizfatima08.github.io/talkingpets/privacy.html (GitHub Pages from `docs/`, see below) |
+| Privacy policy URL | https://tools.homilabs.org/talkypals/privacy.html (Hostinger `tools.homilabs.org/public_html/talkypals/`; mirror: GitHub Pages https://awaizfatima08.github.io/talkingpets/privacy.html) |
 
 Package `com.homilabs.talkypals` (never change it after the first upload) · version 1.0.0 (versionCode 1) · minSdk 24 · targetSdk 36.
 Use **Play App Signing** (the default). `.secrets/talkypals-upload.keystore` is the upload key; credentials in `.secrets/talkypals-upload-keystore-credentials.txt`. Upload-key SHA-256: `2A:4D:F7:1A:6B:33:A4:26:1B:79:73:55:0A:57:AD:C2:1B:96:B0:F2:22:7B:B3:C5:98:48:F8:DF:0A:3E:D2:C2`.
@@ -56,13 +56,13 @@ TalkyPals is free and shows ads suitable for children (child-directed, non-perso
 ```
 
 **App category**: Entertainment (or Education) · **Tags**: Kids, Casual, Simulation/Pets
-**Contact email**: `homilabs.smc@gmail.com` · **Website**: https://awaizfatima08.github.io/talkingpets/
+**Contact email**: `homilabs.smc@gmail.com` · **Website**: https://tools.homilabs.org/talkypals/
 
 ## App content
 
 | Section | Answer |
 |---|---|
-| Privacy policy | https://awaizfatima08.github.io/talkingpets/privacy.html |
+| Privacy policy | https://tools.homilabs.org/talkypals/privacy.html |
 | Ads | **Yes, my app contains ads** |
 | App access | All functionality is available without special access |
 | Content rating (IARC) | Category *Game* or *All other app types*. No violence, sexuality, language, controlled substances, gambling. User interaction: No. Shares location: No. Digital purchases: No. Expected: Everyone / PEGI 3 |

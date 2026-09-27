@@ -9,7 +9,7 @@ Toddler app: three code-drawn toon pets (cat Mimi, parrot Kiwi, rooster Doodle) 
 - Sounds are synthesized by `scripts/make_sfx.py` (no downloads). Font: Quicksand (OFL, from Debian `fonts-quicksand`), in `assets/fonts/`.
 
 ## Status (2026-09-27)
-v1.0.0 (versionCode 1) built, signed and tested on a Galaxy A12 (see `docs/testing.md`). Artifacts in `releases/v1.0.0-1/` (gitignored; in local + Drive backups). Not yet uploaded to Play. Still to do by the owner: enable GitHub Pages (`main` `/docs`) for the privacy URL, create the Play app, and switch to real AdMob IDs for a monetised release.
+v1.0.0 (versionCode 1) built, signed and tested on a Galaxy A12 (see `docs/testing.md`). Artifacts in `releases/v1.0.0-1/` (gitignored; in local + Drive backups). Play app created 2026-09-27 on the Homilabs organisation account (app id 4975335359315327554): store listing, all App content declarations, 177 countries done; production release being prepared. Privacy policy: https://tools.homilabs.org/talkypals/privacy.html (Hostinger, `public_html/talkypals/`; after editing `docs/privacy.html` re-upload there), mirrored on GitHub Pages. Still to do: switch to real AdMob IDs for a monetised release (build currently shows test ads).
 
 ## Commands
 - Tests: `flutter test test/`; device: `bash tool/run_device_tests.sh`; drawings: `flutter test tool/preview_pets_test.dart`; icons/feature graphic: `flutter test tool/make_graphics_test.dart`; SFX: `python3 scripts/make_sfx.py`.
