@@ -1,0 +1,15 @@
+# Asset register
+
+Assets from the homidev pipeline, one row per file. Added by asset-integrate.sh after Homi's approval — do not edit rows by hand.
+
+| Approved | File | Job ID | Recipe | Models | Licences | commercial_ok | sha256 | Approved by |
+|---|---|---|---|---|---|---|---|---|
+| 2026-11-11 | `assets/images/pets/20261111-0922-talkingpets-icon-01_raw.png` | 20261111-0922-talkingpets-icon-01 | icon-cutout-basic v1.0 | z-image-turbo-int8, qwen3-4b-fp8-text-encoder, z-image-vae, birefnet | Apache-2.0, MIT | yes | `17113a16eb56ea298d4408cfd0c12ac86e9049c97ef07f92e6cbae9d49dec007` | Homi |
+| 2026-11-11 | `assets/images/pets/20261111-0922-talkingpets-icon-01_cutout.png` | 20261111-0922-talkingpets-icon-01 | icon-cutout-basic v1.0 | z-image-turbo-int8, qwen3-4b-fp8-text-encoder, z-image-vae, birefnet | Apache-2.0, MIT | yes | `6fe4c8aee4ad001688088be7835ae57e5456c36ebfc00402369e4ece381e1fd9` | Homi |
+| 2026-11-11 | `assets/images/pets/20261111-0922-talkingpets-icon-02_raw.png` | 20261111-0922-talkingpets-icon-02 | icon-cutout-basic v1.0 | z-image-turbo-int8, qwen3-4b-fp8-text-encoder, z-image-vae, birefnet | Apache-2.0, MIT | yes | `064cbcebab506ab08ac69d80e4e19157c039fae523d16d6010ac8dfe4d09c8df` | Homi |
+| 2026-11-11 | `assets/images/pets/20261111-0922-talkingpets-icon-02_cutout.png` | 20261111-0922-talkingpets-icon-02 | icon-cutout-basic v1.0 | z-image-turbo-int8, qwen3-4b-fp8-text-encoder, z-image-vae, birefnet | Apache-2.0, MIT | yes | `01352a6cf9d5fc747e2745b0c429b32a165c6852440a5b1d6ccc07d423bab0cc` | Homi |
+| 2026-11-11 | `assets/images/pets/20261111-0922-talkingpets-icon-03_raw.png` | 20261111-0922-talkingpets-icon-03 | icon-cutout-basic v1.0 | z-image-turbo-int8, qwen3-4b-fp8-text-encoder, z-image-vae, birefnet | Apache-2.0, MIT | yes | `4d544835b4555948a4915a313eebcd710d903abd94a7d16b3323fd244e51429d` | Homi |
+| 2026-11-11 | `assets/images/pets/20261111-0922-talkingpets-icon-03_cutout.png` | 20261111-0922-talkingpets-icon-03 | icon-cutout-basic v1.0 | z-image-turbo-int8, qwen3-4b-fp8-text-encoder, z-image-vae, birefnet | Apache-2.0, MIT | yes | `b48676bd1805e7a2a97d5a5c48a009c7d591a865d60ebb4b257ecebd7086036e` | Homi |
+| 2026-11-11 | `assets/images/pets/20261111-0922-talkingpets-icon-04_raw.png` | 20261111-0922-talkingpets-icon-04 | icon-cutout-basic v1.0 | z-image-turbo-int8, qwen3-4b-fp8-text-encoder, z-image-vae, birefnet | Apache-2.0, MIT | yes | `aaa8b09e2f43b2b8633ddfbb4921b3d232e679093a5a20232f812b6cd50a8d74` | Homi |
+| 2026-11-11 | `assets/images/pets/20261111-0922-talkingpets-icon-04_cutout.png` | 20261111-0922-talkingpets-icon-04 | icon-cutout-basic v1.0 | z-image-turbo-int8, qwen3-4b-fp8-text-encoder, z-image-vae, birefnet | Apache-2.0, MIT | yes | `21435cf701930f06476d1291a5238d77254886b477669319e2ea8f0a246b07cf` | Homi |
+| 2026-11-11 | `assets/images/scenes/20261111-0922-talkingpets-image-01_raw.png` | 20261111-0922-talkingpets-image-01 | image-zimage-basic v1.0 | z-image-turbo-int8, qwen3-4b-fp8-text-encoder, z-image-vae | Apache-2.0 | yes | `ed83e1f6825e855148851caf2fc500d0bc5da237513f2678c90eae8b682345ca` | Homi |
