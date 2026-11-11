@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
+
 import 'package:flutter/material.dart';
 
 import '../core/pets.dart';
@@ -9,7 +10,10 @@ import '../pets/toon.dart';
 /// Each pet's home, drawn behind it. [t] is seconds, for drifting clouds.
 /// [groundY] (0..1 of the height) is where the pet's feet stand.
 class ScenePainter extends CustomPainter {
-  ScenePainter(this.kind, this.t, {this.groundY = 0.74});
+  ScenePainter(this.kind, this.t, {this.groundY = 0.74, this.image});
+
+  /// A 3D scene picture; when set it replaces the drawn scene (cover fit).
+  final ui.Image? image;
 
   final PetKind kind;
   final double t;
@@ -17,6 +21,14 @@ class ScenePainter extends CustomPainter {
 
   @override
   void paint(Canvas c, Size s) {
+    final img = image;
+    if (img != null) {
+      final src = Size(img.width.toDouble(), img.height.toDouble());
+      final fit = applyBoxFit(BoxFit.cover, src, s);
+      final srcRect = Alignment.center.inscribe(fit.source, Offset.zero & src);
+      c.drawImageRect(img, srcRect, Offset.zero & s, Paint()..filterQuality = FilterQuality.medium);
+      return;
+    }
     switch (kind) {
       case PetKind.cat:
         _room(c, s);
@@ -281,5 +293,5 @@ class ScenePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant ScenePainter old) => old.kind != kind || old.t != t;
+  bool shouldRepaint(covariant ScenePainter old) => old.kind != kind || old.image != image || (image == null && old.t != t);
 }

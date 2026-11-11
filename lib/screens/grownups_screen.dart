@@ -111,6 +111,7 @@ class _GrownupsScreenState extends State<GrownupsScreen> {
         _AdLab(ads: ads),
         const SizedBox(height: 16),
         Center(child: Text('${AppInfo.name} ${AppInfo.version} · ${AppInfo.developer}', style: const TextStyle(color: Colors.black45))),
+        const Center(child: Text('Some sounds: Powered by Stability AI', style: TextStyle(color: Colors.black45))),
         const SizedBox(height: 24),
       ]),
     );

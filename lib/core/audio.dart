@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -42,7 +43,12 @@ class PetAudio {
     });
   }
 
-  Future<void> init(List<String> sfxNames) async {
+  /// name -> alternative sound files; [play] picks one at random.
+  Map<String, List<String>> variants = const {};
+  final _rng = math.Random();
+
+  Future<void> init(List<String> sfxNames, {Map<String, List<String>> variants = const {}}) async {
+    this.variants = variants;
     _ensureListening();
     await _invoke('preloadSfx', {'names': sfxNames});
     await _invoke('warmUpSpeech');
@@ -56,6 +62,8 @@ class PetAudio {
 
   /// Plays a sound and returns its duration (0 if unavailable).
   Future<Duration> play(String name, {double rate = 1, double volume = 1}) async {
+    final options = variants[name];
+    if (options != null && options.isNotEmpty) name = options[_rng.nextInt(options.length)];
     final ms = await _invoke<int>('playSfx', {'name': name, 'rate': rate, 'volume': volume});
     return Duration(milliseconds: ms ?? 0);
   }

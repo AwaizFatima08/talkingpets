@@ -1,0 +1,10 @@
+{
+  "_comment": "Which approved homidev job is which pose/scene. Run scripts/prep_art.py after editing.",
+  "cat": {
+    "idle": "20261111-0922-talkingpets-icon-01",
+    "talk": "20261111-0922-talkingpets-icon-02",
+    "happy": "20261111-0922-talkingpets-icon-03",
+    "surprised": "20261111-0922-talkingpets-icon-04",
+    "scene": "20261111-0922-talkingpets-image-01"
+  }
+}

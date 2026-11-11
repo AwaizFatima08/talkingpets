@@ -11,6 +11,7 @@ import '../ads/banner_slot.dart';
 import '../core/audio.dart';
 import '../core/pets.dart';
 import '../core/settings.dart';
+import '../pets/pet_art.dart';
 import '../pets/pet_painters.dart';
 import '../pets/pet_view.dart';
 import '../pets/toon.dart';
@@ -215,7 +216,8 @@ class _PlayScreenState extends State<PlayScreen> with WidgetsBindingObserver, Si
     return Scaffold(
       body: LayoutBuilder(builder: (context, box) {
         final w = box.maxWidth, h = box.maxHeight;
-        const groundY = 0.74;
+        final sceneImage = ArtCache.instance.sceneFor(_pet);
+        final groundY = sceneImage != null ? (artSpecs[_pet]?.sceneGroundY ?? 0.74) : 0.74;
         final top = mq.padding.top + (widget.showBanner ? 60 : 0) + 76;
         final stage = math.min(w * 0.96, (h * groundY - top) / 0.9);
         final stageTop = h * groundY - stage * 0.935;
@@ -224,7 +226,7 @@ class _PlayScreenState extends State<PlayScreen> with WidgetsBindingObserver, Si
             child: RepaintBoundary(
               child: ValueListenableBuilder<double>(
                 valueListenable: _sceneTime,
-                builder: (_, t, _) => CustomPaint(painter: ScenePainter(_pet, t, groundY: groundY)),
+                builder: (_, t, _) => CustomPaint(painter: ScenePainter(_pet, t, groundY: groundY, image: sceneImage)),
               ),
             ),
           ),

@@ -5,6 +5,7 @@ import 'ads/ads_service.dart';
 import 'core/audio.dart';
 import 'core/pets.dart';
 import 'core/settings.dart';
+import 'pets/pet_art.dart';
 import 'screens/intro_screen.dart';
 import 'screens/play_screen.dart';
 
@@ -14,7 +15,8 @@ Future<void> main() async {
   // Full screen, so little fingers don't hit the system bars.
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   await Settings.load();
-  await PetAudio.instance.init(allSfxNames());
+  await PetAudio.instance.init(allSfxNames(), variants: sfxVariants);
+  await ArtCache.instance.load();
   runApp(const TalkyPalsApp());
   // Ads start after the first frame so play is never blocked on the network.
   WidgetsBinding.instance.addPostFrameCallback((_) => AdsService.instance.init());

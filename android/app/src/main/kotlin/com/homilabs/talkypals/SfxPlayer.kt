@@ -2,6 +2,7 @@ package com.homilabs.talkypals
 
 import android.content.Context
 import android.media.AudioAttributes
+import android.media.MediaMetadataRetriever
 import android.media.SoundPool
 import android.util.Log
 import io.flutter.FlutterInjector
@@ -18,18 +19,34 @@ class SfxPlayer(private val context: Context) {
     private val ids = HashMap<String, Int>()
     private val durations = HashMap<String, Long>()
 
-    /** Loads `assets/sfx/<name>.wav` for every name. Call off the main thread. */
+    /**
+     * Loads every sound: a plain name means `assets/sfx/<name>.wav` (made by
+     * scripts/make_sfx.py); a name ending in .ogg is a full asset path (homidev
+     * sounds in assets/audio/sfx/). Call off the main thread.
+     */
     fun preload(names: List<String>) {
         val loader = FlutterInjector.instance().flutterLoader()
         val dir = File(context.cacheDir, "sfx").apply { mkdirs() }
         for (name in names) {
             if (ids.containsKey(name)) continue
             try {
-                val key = loader.getLookupKeyForAsset("assets/sfx/$name.wav")
-                val file = File(dir, "$name.wav")
-                context.assets.open(key).use { input -> file.outputStream().use { input.copyTo(it) } }
-                // 16-bit mono WAV with a 44-byte header (see scripts/make_sfx.py).
-                durations[name] = (file.length() - 44) * 1000 / (2 * 22050)
+                val ogg = name.endsWith(".ogg")
+                val asset = if (ogg) name else "assets/sfx/$name.wav"
+                val file = File(dir, asset.substringAfterLast('/'))
+                context.assets.open(loader.getLookupKeyForAsset(asset)).use { input -> file.outputStream().use { input.copyTo(it) } }
+                durations[name] = if (ogg) {
+                    MediaMetadataRetriever().run {
+                        try {
+                            setDataSource(file.path)
+                            extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)?.toLongOrNull() ?: 1000L
+                        } finally {
+                            release()
+                        }
+                    }
+                } else {
+                    // 16-bit mono WAV with a 44-byte header.
+                    (file.length() - 44) * 1000 / (2 * 22050)
+                }
                 ids[name] = pool.load(file.path, 1)
             } catch (e: Exception) {
                 Log.e("SfxPlayer", "could not load $name", e)

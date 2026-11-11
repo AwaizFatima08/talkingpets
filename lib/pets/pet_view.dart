@@ -11,7 +11,7 @@ import 'pet_painters.dart';
 import 'toon.dart';
 
 /// Sounds during which the pet's mouth stays shut.
-const _mouthClosedSounds = {'wing_flap', 'beak_clack', 'peck', 'boing', 'pop', 'whoosh', 'sparkle', 'cat_purr'};
+const _mouthClosedSounds = {'wing_flap', 'beak_clack', 'peck', 'boing', 'pop', 'whoosh', 'sparkle', 'cat_purr', 'hd_stomp', 'stomp'};
 
 /// Lets the screen poke the pet that is currently on stage. During a switch
 /// animation two PetViews exist; the newest one owns the controller.

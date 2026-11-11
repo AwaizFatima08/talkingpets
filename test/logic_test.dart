@@ -13,7 +13,8 @@ void main() {
   group('pets', () {
     test('every reaction sound exists as an asset', () {
       for (final name in allSfxNames()) {
-        expect(File('assets/sfx/$name.wav').existsSync(), isTrue, reason: name);
+        final path = name.endsWith('.ogg') ? name : 'assets/sfx/$name.wav';
+        expect(File(path).existsSync(), isTrue, reason: name);
       }
     });
 
