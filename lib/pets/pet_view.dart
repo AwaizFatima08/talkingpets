@@ -239,7 +239,7 @@ class PetViewState extends State<PetView> with SingleTickerProviderStateMixin {
       bodyDy = -22 * _levelSmooth;
       squash = 1 + 0.05 * _levelSmooth;
       tilt = math.sin(t * 9) * 0.05 * _levelSmooth;
-      wing = widget.pet.kind == PetKind.cat ? 0 : 0.25 * _levelSmooth;
+      wing = switch (widget.pet.kind) { PetKind.parrot || PetKind.rooster || PetKind.elephant => 0.25 * _levelSmooth, _ => 0.0 };
       mood = Mood.happy;
       if (_levelSmooth > 0.05) mood = Mood.neutral;
       blink = 0;

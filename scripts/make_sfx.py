@@ -246,6 +246,40 @@ def rooster_sounds():
     save("rooster_kawk", kawk)
 
 
+
+# ---------------------------------------------------------------- puppy
+# Placeholders until the homidev (Stable Audio) versions are approved.
+
+def puppy_sounds():
+    gruff = dict(jitter=0.04, rough=0.3, rough_hz=55, breath=0.15, tilt=0.995)
+    woof = lambda f=420: shaped(voice(0.16, [(0, f), (0.3, f * 1.25), (1, f * 0.8)], [(0, "u"), (0.35, "a"), (1, "o")], **gruff), 0.005, 0.06)
+    save("dog_woof", mix(0.55, [(0, woof()), (0.26, woof(450))]))
+    yip = shaped(voice(0.14, [(0, 900), (0.3, 1250), (1, 950)], [(0, "i"), (1, "e")], jitter=0.03), 0.004, 0.05)
+    save("dog_yip", mix(0.4, [(0, yip), (0.18, yip * 0.9)]))
+    # Happy panting: quick breathy huffs.
+    huff = lambda: bandpass(noise(0.09), 700, 3500) * env(int(0.09 * SR), 0.01, 0.05)
+    save("dog_pant", mix(1.2, [(i * 0.15, huff() * (1 if i % 2 else 0.7)) for i in range(8)]), 0.6)
+    wh = voice(0.7, [(0, 1100), (0.5, 1350), (1, 800)], [(0, "i"), (1, "u")], jitter=0.02, breath=0.3)
+    save("dog_whimper", shaped(wh, 0.05, 0.2), 0.6)
+
+# ---------------------------------------------------------------- elephant
+
+def elephant_sounds():
+    brass = dict(jitter=0.02, rough=0.2, rough_hz=30, breath=0.2, bw=(200, 260, 400), tilt=0.998)
+    tr = voice(1.1, [(0, 380), (0.15, 620), (0.7, 560), (1, 420)], [(0, "a"), (0.3, "e"), (1, "a")], **brass)
+    save("elephant_trumpet", shaped(tr, 0.05, 0.25))
+    n = int(1.4 * SR)
+    t = np.arange(n) / SR
+    rum = lowpass(noise(1.4), 180) * 4 + 0.6 * np.sin(2 * np.pi * 48 * t) * (1 + 0.3 * np.sin(2 * np.pi * 7 * t))
+    save("elephant_rumble", shaped(rum, 0.2, 0.4), 0.7)
+    toot = shaped(voice(0.28, [(0, 700), (1, 900)], [(0, "u"), (1, "o")], **brass), 0.01, 0.08)
+    save("elephant_toot", toot)
+    spray = bandpass(noise(0.8), 1500, 8000) * env(int(0.8 * SR), 0.02, 0.4, [(0, 0.3), (0.15, 1), (1, 0.2)])
+    save("elephant_spray", spray, 0.5)
+    thud = lambda: lowpass(noise(0.18), 220) * env(int(0.18 * SR), 0.002, 0.12) * 3 + \
+        np.sin(2 * np.pi * 55 * np.arange(int(0.18 * SR)) / SR) * env(int(0.18 * SR), 0.002, 0.12)
+    save("stomp", mix(0.65, [(0, thud()), (0.35, thud())]), 0.8)
+
 # ---------------------------------------------------------------- shared
 
 def shared_sounds():
@@ -289,6 +323,8 @@ def main():
     cat_sounds()
     parrot_sounds()
     rooster_sounds()
+    puppy_sounds()
+    elephant_sounds()
     shared_sounds()
 
 

@@ -374,28 +374,34 @@ class _PetSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Five pets must fit a 320 dp phone: size the buttons from the width.
+    final w = MediaQuery.sizeOf(context).width;
+    final slot = ((w - 16) / allPets.length).clamp(48.0, 96.0);
+    final small = slot - 12, big = slot - 2;
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       for (final p in allPets)
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: GestureDetector(
-            key: Key('pick-${p.kind.name}'),
-            onTap: () => onPick(p.kind),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 250),
-              width: p.kind == current ? 88 : 72,
-              height: p.kind == current ? 88 : 72,
-              decoration: BoxDecoration(
-                color: p.kind == current ? Colors.white : Colors.white70,
-                shape: BoxShape.circle,
-                border: Border.all(color: p.kind == current ? const Color(0xFFFFB02E) : Colors.white, width: 4),
-                boxShadow: const [BoxShadow(color: Color(0x33000000), blurRadius: 6, offset: Offset(0, 3))],
-              ),
-              child: ClipOval(
-                child: Transform.scale(
-                  scale: 1.55,
-                  alignment: const Alignment(0, -0.55),
-                  child: CustomPaint(painter: painterFor(p.kind, const PetPose(mood: Mood.happy))),
+        SizedBox(
+          width: slot,
+          child: Center(
+            child: GestureDetector(
+              key: Key('pick-${p.kind.name}'),
+              onTap: () => onPick(p.kind),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
+                width: p.kind == current ? big : small,
+                height: p.kind == current ? big : small,
+                decoration: BoxDecoration(
+                  color: p.kind == current ? Colors.white : Colors.white70,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: p.kind == current ? const Color(0xFFFFB02E) : Colors.white, width: 3),
+                  boxShadow: const [BoxShadow(color: Color(0x33000000), blurRadius: 6, offset: Offset(0, 3))],
+                ),
+                child: ClipOval(
+                  child: Transform.scale(
+                    scale: 1.55,
+                    alignment: const Alignment(0, -0.55),
+                    child: CustomPaint(painter: painterFor(p.kind, const PetPose(mood: Mood.happy))),
+                  ),
                 ),
               ),
             ),

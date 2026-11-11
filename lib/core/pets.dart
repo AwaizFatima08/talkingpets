@@ -1,9 +1,9 @@
 import 'audio.dart';
 
-enum PetKind { cat, parrot, rooster }
+enum PetKind { cat, parrot, rooster, puppy, elephant }
 
 /// Touchable parts. Each pet uses the subset that it has.
-enum BodyPart { head, ears, eyes, nose, beak, crest, comb, wattle, cheeks, belly, tail, wings, paws, feet }
+enum BodyPart { head, ears, eyes, nose, beak, crest, comb, wattle, cheeks, belly, tail, wings, paws, feet, trunk }
 
 /// Facial expression.
 enum Mood { neutral, happy, laugh, surprised, dizzy, sleepy, grumpy, love, listening }
@@ -204,7 +204,83 @@ const rooster = PetSpec(
   },
 );
 
-const allPets = [cat, parrot, rooster];
+const puppy = PetSpec(
+  kind: PetKind.puppy,
+  name: 'Biscuit',
+  emoji: '🐶',
+  voice: VoiceSpec(pitch: 1.45, vibratoHz: 8, vibratoDepth: 0.05),
+  greeting: Reaction(sound: 'dog_woof', mood: Mood.happy, motion: Motion.wag, fx: Fx.hearts),
+  reactions: {
+    BodyPart.head: [
+      Reaction(sound: 'dog_pant', mood: Mood.love, motion: Motion.nod, fx: Fx.hearts),
+      Reaction(sound: 'dog_woof', mood: Mood.happy, motion: Motion.bounce),
+    ],
+    BodyPart.ears: [
+      Reaction(sound: 'dog_yip', mood: Mood.happy, motion: Motion.shake),
+      Reaction(sound: 'dog_whimper', mood: Mood.surprised, motion: Motion.wiggle),
+    ],
+    BodyPart.eyes: [
+      Reaction(sound: 'dog_yip', mood: Mood.dizzy, motion: Motion.wiggle, fx: Fx.stars),
+    ],
+    BodyPart.nose: [
+      Reaction(sound: 'cat_sneeze', mood: Mood.surprised, motion: Motion.jump, fx: Fx.sneeze, rate: 0.85),
+      Reaction(sound: 'boing', mood: Mood.laugh, motion: Motion.squash),
+    ],
+    BodyPart.cheeks: [
+      Reaction(sound: 'dog_pant', mood: Mood.love, motion: Motion.nod, fx: Fx.hearts),
+    ],
+    BodyPart.belly: [
+      Reaction(sound: 'giggle', mood: Mood.laugh, motion: Motion.wiggle, fx: Fx.notes, rate: 1.1),
+      Reaction(sound: 'dog_pant', mood: Mood.laugh, motion: Motion.squash, fx: Fx.bubbles),
+    ],
+    BodyPart.tail: [
+      Reaction(sound: 'dog_woof', mood: Mood.happy, motion: Motion.wag, fx: Fx.hearts),
+      Reaction(sound: 'dog_yip', mood: Mood.surprised, motion: Motion.jump),
+    ],
+    BodyPart.paws: [
+      Reaction(sound: 'dog_woof', mood: Mood.happy, motion: Motion.wag),
+      Reaction(sound: 'boing', mood: Mood.laugh, motion: Motion.jump),
+    ],
+  },
+);
+
+const elephant = PetSpec(
+  kind: PetKind.elephant,
+  name: 'Peanut',
+  emoji: '🐘',
+  voice: VoiceSpec(pitch: 0.82, vibratoHz: 5, vibratoDepth: 0.06),
+  greeting: Reaction(sound: 'elephant_trumpet', mood: Mood.happy, motion: Motion.tall, fx: Fx.notes),
+  reactions: {
+    BodyPart.trunk: [
+      Reaction(sound: 'elephant_trumpet', mood: Mood.happy, motion: Motion.tall, fx: Fx.notes),
+      Reaction(sound: 'elephant_spray', mood: Mood.laugh, motion: Motion.shake, fx: Fx.sneeze),
+    ],
+    BodyPart.ears: [
+      Reaction(sound: 'wing_flap', mood: Mood.happy, motion: Motion.flap, rate: 0.6),
+      Reaction(sound: 'elephant_toot', mood: Mood.surprised, motion: Motion.flap),
+    ],
+    BodyPart.head: [
+      Reaction(sound: 'elephant_rumble', mood: Mood.love, motion: Motion.nod, fx: Fx.hearts),
+      Reaction(sound: 'elephant_trumpet', mood: Mood.happy, motion: Motion.tall, fx: Fx.notes),
+    ],
+    BodyPart.eyes: [
+      Reaction(sound: 'elephant_toot', mood: Mood.dizzy, motion: Motion.wiggle, fx: Fx.stars),
+    ],
+    BodyPart.belly: [
+      Reaction(sound: 'giggle', mood: Mood.laugh, motion: Motion.wiggle, fx: Fx.notes, rate: 0.8),
+      Reaction(sound: 'elephant_rumble', mood: Mood.laugh, motion: Motion.squash, fx: Fx.bubbles),
+    ],
+    BodyPart.feet: [
+      Reaction(sound: 'stomp', mood: Mood.happy, motion: Motion.jump),
+      Reaction(sound: 'stomp', mood: Mood.laugh, motion: Motion.bounce, rate: 1.2),
+    ],
+    BodyPart.tail: [
+      Reaction(sound: 'elephant_toot', mood: Mood.surprised, motion: Motion.jump),
+    ],
+  },
+);
+
+const allPets = [cat, parrot, rooster, puppy, elephant];
 
 PetSpec petOf(PetKind kind) => allPets.firstWhere((p) => p.kind == kind);
 

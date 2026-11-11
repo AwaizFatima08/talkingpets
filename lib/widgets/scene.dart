@@ -24,6 +24,10 @@ class ScenePainter extends CustomPainter {
         _jungle(c, s);
       case PetKind.rooster:
         _farm(c, s);
+      case PetKind.puppy:
+        _yard(c, s);
+      case PetKind.elephant:
+        _savanna(c, s);
     }
   }
 
@@ -144,6 +148,78 @@ class ScenePainter extends CustomPainter {
         c.drawCircle(o + Offset(math.cos(a), math.sin(a)) * 9, 8, solid(col));
       }
       c.drawCircle(o, 6, solid(const Color(0xFFFFF176)));
+    }
+  }
+
+  void _yard(Canvas c, Size s) {
+    final ground = s.height * groundY;
+    _sky(c, s, const Color(0xFF8ED8FF), const Color(0xFFE8F8FF));
+    c.drawCircle(Offset(s.width * 0.15, s.height * 0.1), 34, solid(const Color(0xFFFFE066)));
+    _clouds(c, s, s.height * 0.12, 9);
+    // Hedge and white picket fence.
+    for (var i = 0; i < 8; i++) {
+      c.drawCircle(Offset(s.width * i / 7, ground - s.height * 0.13), s.width * 0.11, solid(const Color(0xFF5DBB63)));
+    }
+    final picket = solid(Colors.white);
+    final edge = Paint()..style = PaintingStyle.stroke..strokeWidth = 2..color = const Color(0xFFB8C4CC);
+    for (var x = 4.0; x < s.width; x += s.width / 11) {
+      final p = Path()
+        ..moveTo(x, ground - s.height * 0.08)
+        ..lineTo(x, ground - s.height * 0.17)
+        ..lineTo(x + 9, ground - s.height * 0.19)
+        ..lineTo(x + 18, ground - s.height * 0.17)
+        ..lineTo(x + 18, ground - s.height * 0.08)
+        ..close();
+      c.drawPath(p, picket);
+      c.drawPath(p, edge);
+    }
+    c.drawRect(Rect.fromLTWH(0, ground - s.height * 0.15, s.width, 8), picket);
+    c.drawRect(Rect.fromLTRB(0, ground - s.height * 0.08, s.width, s.height), solid(const Color(0xFF7BCB55)));
+    // Doghouse on the left.
+    final house = Rect.fromLTWH(s.width * 0.02, ground - s.height * 0.2, s.width * 0.22, s.height * 0.13);
+    c.drawRect(house, solid(const Color(0xFFE07A3F)));
+    c.drawPath(Path()
+      ..moveTo(house.left - 8, house.top)
+      ..lineTo(house.center.dx, house.top - s.height * 0.06)
+      ..lineTo(house.right + 8, house.top)
+      ..close(), solid(const Color(0xFF8E3B22)));
+    c.drawOval(Rect.fromCenter(center: Offset(house.center.dx, house.bottom - house.height * 0.3), width: house.width * 0.45, height: house.height * 0.6),
+        solid(const Color(0xFF3B2416)));
+    // Ball and bone.
+    final ball = Offset(s.width * 0.86, ground + s.height * 0.08);
+    c.drawCircle(ball, 18, solid(const Color(0xFFFF4F6D)));
+    c.drawArc(Rect.fromCircle(center: ball, radius: 18), -0.3, 2.4, false, Paint()..style = PaintingStyle.stroke..strokeWidth = 4..color = Colors.white);
+    final bone = Offset(s.width * 0.14, ground + s.height * 0.12);
+    c.drawRRect(RRect.fromRectAndRadius(Rect.fromCenter(center: bone, width: 44, height: 12), const Radius.circular(6)), solid(const Color(0xFFFFF4E4)));
+    for (final dx in [-22.0, 22.0]) {
+      for (final dy in [-6.0, 6.0]) {
+        c.drawCircle(bone + Offset(dx, dy), 8, solid(const Color(0xFFFFF4E4)));
+      }
+    }
+  }
+
+  void _savanna(Canvas c, Size s) {
+    final ground = s.height * groundY;
+    _sky(c, s, const Color(0xFFFFC37A), const Color(0xFFFFEBC2));
+    c.drawCircle(Offset(s.width * 0.75, s.height * 0.16), 60, solid(const Color(0xFFFFE08A).withValues(alpha: 0.9)));
+    _clouds(c, s, s.height * 0.08, 6);
+    c.drawOval(Rect.fromCenter(center: Offset(s.width * 0.5, ground - s.height * 0.06), width: s.width * 1.6, height: s.height * 0.22), solid(const Color(0xFFE8C46A)));
+    // Acacia trees.
+    void acacia(Offset base, double sz) {
+      c.drawLine(base, base + Offset(0, -sz), Paint()..color = const Color(0xFF6B4A2B)..strokeWidth = sz * 0.08..strokeCap = StrokeCap.round);
+      c.drawOval(Rect.fromCenter(center: base + Offset(0, -sz), width: sz * 1.6, height: sz * 0.4), solid(const Color(0xFF6E9A3E)));
+    }
+    acacia(Offset(s.width * 0.12, ground - s.height * 0.1), s.width * 0.22);
+    acacia(Offset(s.width * 0.88, ground - s.height * 0.12), s.width * 0.16);
+    c.drawRect(Rect.fromLTRB(0, ground - s.height * 0.08, s.width, s.height), solid(const Color(0xFFD9B455)));
+    // Waterhole and grass tufts.
+    c.drawOval(Rect.fromCenter(center: Offset(s.width * 0.82, ground + s.height * 0.1), width: s.width * 0.34, height: s.height * 0.05), solid(const Color(0xFF6CC3E8)));
+    final blade = Paint()..color = const Color(0xFFB08A2E)..strokeWidth = 3..strokeCap = StrokeCap.round;
+    final rng = math.Random(5);
+    for (var i = 0; i < 24; i++) {
+      final o = Offset(rng.nextDouble() * s.width, ground - s.height * 0.04 + rng.nextDouble() * s.height * 0.28);
+      c.drawLine(o, o + const Offset(-4, -14), blade);
+      c.drawLine(o, o + const Offset(4, -15), blade);
     }
   }
 

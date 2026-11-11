@@ -86,6 +86,25 @@ void main() {
         BodyPart.feet: const Offset(455, 900),
         BodyPart.tail: const Offset(850, 340),
       },
+      PetKind.puppy: {
+        BodyPart.nose: const Offset(500, 445),
+        BodyPart.eyes: const Offset(420, 372),
+        BodyPart.ears: const Offset(790, 400),
+        BodyPart.cheeks: const Offset(500, 515),
+        BodyPart.head: const Offset(500, 240),
+        BodyPart.belly: const Offset(500, 780),
+        BodyPart.tail: const Offset(715, 720),
+        BodyPart.paws: const Offset(440, 905),
+      },
+      PetKind.elephant: {
+        BodyPart.trunk: const Offset(560, 590),
+        BodyPart.eyes: const Offset(440, 345),
+        BodyPart.head: const Offset(500, 230),
+        BodyPart.ears: const Offset(230, 380),
+        BodyPart.belly: const Offset(380, 700),
+        BodyPart.feet: const Offset(400, 880),
+        BodyPart.tail: const Offset(745, 780),
+      },
     };
 
     for (final e in expectations.entries) {

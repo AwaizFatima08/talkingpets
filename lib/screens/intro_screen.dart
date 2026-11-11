@@ -40,7 +40,7 @@ class IntroScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 Text('TalkyPals', style: t.displaySmall?.copyWith(fontWeight: FontWeight.w900, color: const Color(0xFFFF7A3D))),
                 const SizedBox(height: 16),
-                Text('Talk to Mimi, Kiwi and Doodle and they repeat it in a funny voice! Tap their ears, noses, tummies and tails for silly sounds.',
+                Text('Talk to Mimi, Kiwi, Doodle, Biscuit and Peanut and they repeat it in a funny voice! Tap their ears, noses, tummies and tails for silly sounds.',
                     textAlign: TextAlign.center, style: t.titleMedium?.copyWith(fontWeight: FontWeight.w700)),
                 const SizedBox(height: 20),
                 Container(
