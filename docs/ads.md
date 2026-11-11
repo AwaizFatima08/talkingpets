@@ -17,32 +17,22 @@ Every request uses `RequestConfiguration(ageRestrictedTreatment: child, maxAdCon
 
 Status chips (SDK ready, can request ads, consent status, interstitial/rewarded loaded), buttons to **show an interstitial or rewarded ad now**, open the **Ad Inspector**, **reset consent**, and a live **event log** (loads, failures with codes, impressions, clicks, closes, rewards).
 
-## Test IDs (default)
+## Ad units (HomiLabs AdMob account, publisher pub-2087846699268567)
 
-Google's public sample IDs are used unless real ones are passed at build time:
+Created 11 Nov 2026 on homilabs.smc@gmail.com, app "TalkyPals: Funny Talking Pets" (linked to Google Play).
 
-| | ID |
-|---|---|
-| App ID | `ca-app-pub-3940256099942544~3347511713` |
-| Adaptive banner | `ca-app-pub-3940256099942544/9214589741` |
-| Interstitial | `ca-app-pub-3940256099942544/1033173712` |
-| Rewarded | `ca-app-pub-3940256099942544/5224354917` |
+| | Real (release builds) | Google test (debug/profile builds) |
+|---|---|---|
+| App ID | `ca-app-pub-2087846699268567~7871177075` | `ca-app-pub-3940256099942544~3347511713` |
+| Banner | `ca-app-pub-2087846699268567/3020185971` | `ca-app-pub-3940256099942544/9214589741` |
+| Interstitial | `ca-app-pub-2087846699268567/6276904702` | `ca-app-pub-3940256099942544/1033173712` |
+| Rewarded ("TalkyPals Rewarded Hats") | `ca-app-pub-2087846699268567/2255713305` | `ca-app-pub-3940256099942544/5224354917` |
 
-## Switching to real ads
-
-1. In AdMob, create the app (Android, package `com.homilabs.talkypals`) and three ad units (banner, interstitial, rewarded). Under the app's settings mark it **directed to children** / "Designed for families".
-2. Build with your IDs (no code change):
-   ```
-   flutter build appbundle --release \
-     --dart-define=TP_REAL_ADS=true \
-     --dart-define=TP_BANNER_ID=ca-app-pub-XXXX/BBBB \
-     --dart-define=TP_INTERSTITIAL_ID=ca-app-pub-XXXX/IIII \
-     --dart-define=TP_REWARDED_ID=ca-app-pub-XXXX/RRRR \
-     --android-project-arg=admobAppId=ca-app-pub-XXXX~AAAA
-   ```
-   The Ad test lab then says "Real ad units". Never click your own real ads; add your phone's hashed ID (logcat prints it) to `AdConfig.testDeviceIds` to get test ads on it.
-3. Link the Play listing in AdMob once the app is published, and add `app-ads.txt` to the developer website listed on Play.
-4. In Play Console → App content → **Ads: Yes**; the target audience is under 5, so only Families-certified SDKs may be used (AdMob is).
+- `AdConfig.realAds` defaults to `kReleaseMode`; force with `--dart-define=TP_REAL_ADS=true|false`. The app ID is set per build type in `android/app/build.gradle.kts` (release = real) and must match.
+- `AdConfig.testDeviceIds` lists your own phones (hashed ID from logcat "Use RequestConfiguration…"), so they get test ads even in release builds. Add every phone you test on; **never click real ads on your own devices**.
+- `app-ads.txt` is served at https://tools.homilabs.org/app-ads.txt and https://homilabs.org/app-ads.txt (`google.com, pub-2087846699268567, DIRECT, f08c47fec0942fa0`).
+- AdMob review of the app started 11 Nov 2026 (2–3 days, limited ad serving until then). New units can take up to an hour to fill.
+- The Ad test lab shows "Real ad units" or "Google test ad units".
 
 ## Mediation / other networks
 

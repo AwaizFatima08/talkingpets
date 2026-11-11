@@ -1,25 +1,26 @@
-/// AdMob configuration.
+import 'package:flutter/foundation.dart';
+
+/// AdMob configuration (HomiLabs account pub-2087846699268567, app
+/// "TalkyPals: Funny Talking Pets").
 ///
-/// By default the app uses Google's public TEST ad units, which always serve
-/// labelled test ads and are safe to click. For a monetised build pass the real
-/// units at build time (see docs/ads.md):
-///
-///   flutter build appbundle --dart-define=TP_REAL_ADS=true \
-///     --dart-define=TP_BANNER_ID=ca-app-pub-xxx/yyy \
-///     --dart-define=TP_INTERSTITIAL_ID=ca-app-pub-xxx/yyy \
-///     --dart-define=TP_REWARDED_ID=ca-app-pub-xxx/yyy \
-///     -PadmobAppId=ca-app-pub-xxx~zzz
+/// Release builds use the real ad units; debug and profile builds use Google's
+/// public TEST units, which serve labelled test ads that are safe to click.
+/// Override either way with --dart-define=TP_REAL_ADS=true|false.
+/// The matching app ID is set per build type in android/app/build.gradle.kts.
 class AdConfig {
-  static const realAds = bool.fromEnvironment('TP_REAL_ADS');
+  static const realAds = bool.fromEnvironment('TP_REAL_ADS', defaultValue: kReleaseMode);
 
-  static const bannerId = realAds ? String.fromEnvironment('TP_BANNER_ID') : 'ca-app-pub-3940256099942544/9214589741';
+  static const bannerId = realAds ? 'ca-app-pub-2087846699268567/3020185971' : 'ca-app-pub-3940256099942544/9214589741';
   static const interstitialId =
-      realAds ? String.fromEnvironment('TP_INTERSTITIAL_ID') : 'ca-app-pub-3940256099942544/1033173712';
-  static const rewardedId = realAds ? String.fromEnvironment('TP_REWARDED_ID') : 'ca-app-pub-3940256099942544/5224354917';
+      realAds ? 'ca-app-pub-2087846699268567/6276904702' : 'ca-app-pub-3940256099942544/1033173712';
+  static const rewardedId = realAds ? 'ca-app-pub-2087846699268567/2255713305' : 'ca-app-pub-3940256099942544/5224354917';
 
-  /// Hashed device IDs that always get test ads even with real units
-  /// (printed in logcat by the Ads SDK as "Use RequestConfiguration...").
-  static const testDeviceIds = <String>[];
+  /// Hashed device IDs that always get test ads, even with the real units
+  /// (the Ads SDK prints them in logcat as "Use RequestConfiguration...").
+  /// Never click real ads on your own devices: add every test phone here.
+  static const testDeviceIds = <String>[
+    '612A06FA5424E5773B59912587C83AB9', // Samsung Galaxy A12 (SM-A125F)
+  ];
 }
 
 /// When an interstitial may interrupt play. Kept gentle for toddlers:

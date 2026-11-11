@@ -141,7 +141,7 @@ void main() {
     });
   });
 
-  test('test ad units are Google samples unless real ads are requested', () {
+  test('host tests (not release) use Google test ad units', () {
     expect(AdConfig.realAds, isFalse);
     expect(AdConfig.bannerId, startsWith('ca-app-pub-3940256099942544/'));
     expect(AdConfig.interstitialId, startsWith('ca-app-pub-3940256099942544/'));
