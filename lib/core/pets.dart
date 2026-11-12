@@ -125,22 +125,22 @@ const parrot = PetSpec(
   name: 'Kiwi',
   emoji: '🦜',
   voice: VoiceSpec(pitch: 1.8, vibratoHz: 9, vibratoDepth: 0.04, tremoloHz: 16, tremoloDepth: 0.25),
-  greeting: Reaction(say: 'Hello!', sound: 'parrot_whistle', mood: Mood.happy, motion: Motion.flap, fx: Fx.notes),
+  greeting: Reaction(sound: 'parrot_whistle', mood: Mood.happy, motion: Motion.flap, fx: Fx.notes),
   reactions: {
     BodyPart.crest: [
       Reaction(sound: 'parrot_whistle', mood: Mood.happy, motion: Motion.tall, fx: Fx.notes),
       Reaction(sound: 'parrot_squawk', mood: Mood.surprised, motion: Motion.jump),
     ],
     BodyPart.head: [
-      Reaction(say: 'Pretty bird!', sound: 'parrot_whistle', mood: Mood.love, motion: Motion.nod, fx: Fx.hearts),
-      Reaction(say: 'Peekaboo!', sound: 'parrot_chirps', mood: Mood.happy, motion: Motion.bounce),
+      Reaction(sound: 'parrot_whistle', mood: Mood.love, motion: Motion.nod, fx: Fx.hearts),
+      Reaction(sound: 'parrot_chirps', mood: Mood.happy, motion: Motion.bounce),
     ],
     BodyPart.eyes: [
       Reaction(sound: 'parrot_squawk', mood: Mood.dizzy, motion: Motion.wiggle, fx: Fx.stars),
     ],
     BodyPart.beak: [
-      Reaction(say: 'Hello!', sound: 'beak_clack', mood: Mood.happy, motion: Motion.nod),
-      Reaction(say: 'Cracker please!', sound: 'beak_clack', mood: Mood.laugh, motion: Motion.bounce),
+      Reaction(sound: 'beak_clack', mood: Mood.happy, motion: Motion.nod),
+      Reaction(sound: 'beak_clack', mood: Mood.laugh, motion: Motion.bounce),
       Reaction(sound: 'beak_clack', mood: Mood.grumpy, motion: Motion.shake),
     ],
     BodyPart.belly: [
@@ -156,7 +156,7 @@ const parrot = PetSpec(
     ],
     BodyPart.feet: [
       Reaction(sound: 'parrot_brrd', mood: Mood.happy, motion: Motion.jump),
-      Reaction(say: 'I love you!', sound: 'parrot_chirps', mood: Mood.love, motion: Motion.bounce, fx: Fx.hearts),
+      Reaction(sound: 'parrot_chirps', mood: Mood.love, motion: Motion.bounce, fx: Fx.hearts),
     ],
   },
 );

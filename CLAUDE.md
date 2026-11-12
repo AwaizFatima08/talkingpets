@@ -12,7 +12,7 @@ Toddler app: five 3D pets (cat Mimi, parrot Kiwi, rooster Doodle, puppy Biscuit,
 ## Status (2026-09-27)
 v1.0.0 (versionCode 1) built, signed and tested on a Galaxy A12 (see `docs/testing.md`). Artifacts in `releases/v1.0.0-1/` (gitignored; in local + Drive backups). Play app created 2026-09-27 on the Homilabs organisation account (app id 4975335359315327554): v1.0.0 (versionCode 1) submitted to **production** review on 2026-09-27 (177 countries, full rollout, managed publishing off, so it goes live on approval). Teacher Approved: opted out for now. Privacy policy: https://tools.homilabs.org/talkypals/privacy.html (Hostinger, `public_html/talkypals/`; after editing `docs/privacy.html` re-upload there), mirrored on GitHub Pages. Release builds use the real HomiLabs AdMob units (`docs/ads.md`); debug builds use test IDs.
 
-v1.1.0 (versionCode 3, 2026-11-13): 3D art for all 5 pets, puppy + elephant, homidev sounds, real ads. AAB in `releases/v1.1.0-3/`, release-check PASS, handed to Homi for upload. (v1.0.1-2 was built but never uploaded.)
+v1.1.0 (versionCode 4, 2026-11-13): 3D art for all 5 pets, puppy + elephant, homidev sounds, 3D cat launcher icon, parrot TTS lines removed, real ads. AAB in `releases/v1.1.0-4/` (build 3 superseded); store graphics via `python3 scripts/make_store_assets.py`, listing text + release notes in `docs/store-listing-v1.1.0.md`, release-check PASS, handed to Homi for upload. (v1.0.1-2 was built but never uploaded.)
 
 ## Commands
 - Tests: `flutter test test/`; device: `bash tool/run_device_tests.sh`; drawings: `flutter test tool/preview_pets_test.dart`; icons/feature graphic: `flutter test tool/make_graphics_test.dart`; SFX: `python3 scripts/make_sfx.py`.
