@@ -6,5 +6,33 @@
     "happy": "20261111-0922-talkingpets-icon-03",
     "surprised": "20261111-0922-talkingpets-icon-04",
     "scene": "20261111-0922-talkingpets-image-01"
+  },
+  "parrot": {
+    "idle": "20261111-2343-talkingpets-icon-01",
+    "talk": "20261111-2343-talkingpets-icon-02",
+    "happy": "20261111-2343-talkingpets-icon-03",
+    "surprised": "20261111-2343-talkingpets-icon-04",
+    "scene": "20261111-2343-talkingpets-image-01"
+  },
+  "rooster": {
+    "idle": "20261111-2346-talkingpets-icon-01",
+    "talk": "20261112-0024-talkingpets-icon-01",
+    "happy": "20261112-0024-talkingpets-icon-02",
+    "surprised": "20261112-0025-talkingpets-icon-01",
+    "scene": "20261112-0025-talkingpets-image-01"
+  },
+  "puppy": {
+    "idle": "20261112-0026-talkingpets-icon-01",
+    "talk": "20261112-0026-talkingpets-icon-02",
+    "happy": "20261112-0026-talkingpets-icon-03",
+    "surprised": "20261112-0027-talkingpets-icon-01",
+    "scene": "20261112-0027-talkingpets-image-01"
+  },
+  "elephant": {
+    "idle": "20261112-0028-talkingpets-icon-01",
+    "talk": "20261112-0028-talkingpets-icon-02",
+    "happy": "20261112-0029-talkingpets-icon-01",
+    "surprised": "20261112-0029-talkingpets-icon-02",
+    "scene": "20261112-0029-talkingpets-image-01"
   }
 }

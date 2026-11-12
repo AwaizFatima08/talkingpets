@@ -42,6 +42,61 @@ const artSpecs = <PetKind, ArtSpec>{
       (BodyPart.belly, [(Offset(470, 720), 230, 230)]),
     ],
   ),
+  PetKind.parrot: ArtSpec(
+    feet: Offset(530, 970),
+    anchors: HeadAnchors(top: Offset(530, 150), eyeLeft: Offset(420, 320), eyeRight: Offset(690, 310), eyeRadius: 50, width: 460),
+    regions: [
+      (BodyPart.crest, [(Offset(530, 75), 85, 70)]),
+      (BodyPart.beak, [(Offset(570, 370), 65, 70)]),
+      (BodyPart.eyes, [(Offset(420, 320), 55, 55), (Offset(690, 310), 50, 55)]),
+      (BodyPart.feet, [(Offset(420, 940), 60, 45), (Offset(650, 930), 65, 45)]),
+      (BodyPart.tail, [(Offset(230, 860), 70, 50)]),
+      (BodyPart.wings, [(Offset(295, 670), 80, 140), (Offset(785, 650), 40, 120)]),
+      (BodyPart.head, [(Offset(530, 320), 250, 220)]),
+      (BodyPart.belly, [(Offset(530, 730), 220, 200)]),
+    ],
+  ),
+  PetKind.rooster: ArtSpec(
+    feet: Offset(600, 975),
+    anchors: HeadAnchors(top: Offset(650, 170), eyeLeft: Offset(620, 300), eyeRight: Offset(750, 300), eyeRadius: 40, width: 360),
+    regions: [
+      (BodyPart.comb, [(Offset(620, 100), 110, 85)]),
+      (BodyPart.beak, [(Offset(690, 355), 65, 50)]),
+      (BodyPart.wattle, [(Offset(695, 460), 80, 60)]),
+      (BodyPart.eyes, [(Offset(620, 305), 45, 45), (Offset(750, 300), 40, 45)]),
+      (BodyPart.feet, [(Offset(500, 940), 75, 45), (Offset(700, 935), 85, 45)]),
+      (BodyPart.tail, [(Offset(260, 480), 140, 170)]),
+      (BodyPart.wings, [(Offset(370, 640), 90, 90)]),
+      (BodyPart.head, [(Offset(650, 310), 200, 170)]),
+      (BodyPart.belly, [(Offset(630, 720), 230, 190)]),
+    ],
+  ),
+  PetKind.puppy: ArtSpec(
+    feet: Offset(520, 980),
+    anchors: HeadAnchors(top: Offset(530, 90), eyeLeft: Offset(420, 265), eyeRight: Offset(645, 260), eyeRadius: 50, width: 460),
+    regions: [
+      (BodyPart.nose, [(Offset(550, 345), 70, 50)]),
+      (BodyPart.eyes, [(Offset(420, 265), 55, 50), (Offset(645, 260), 55, 50)]),
+      (BodyPart.ears, [(Offset(200, 320), 90, 190), (Offset(830, 300), 80, 190)]),
+      (BodyPart.cheeks, [(Offset(360, 410), 60, 50), (Offset(700, 410), 60, 50)]),
+      (BodyPart.paws, [(Offset(300, 925), 65, 45), (Offset(440, 950), 65, 40), (Offset(630, 950), 65, 40), (Offset(725, 915), 55, 45)]),
+      (BodyPart.tail, [(Offset(165, 760), 60, 110)]),
+      (BodyPart.head, [(Offset(530, 300), 240, 230)]),
+      (BodyPart.belly, [(Offset(530, 720), 200, 180)]),
+    ],
+  ),
+  PetKind.elephant: ArtSpec(
+    feet: Offset(520, 985),
+    anchors: HeadAnchors(top: Offset(510, 215), eyeLeft: Offset(420, 445), eyeRight: Offset(645, 445), eyeRadius: 45, width: 420),
+    regions: [
+      (BodyPart.trunk, [(Offset(530, 560), 55, 55), (Offset(555, 640), 50, 50), (Offset(595, 715), 50, 50), (Offset(620, 760), 45, 45)]),
+      (BodyPart.eyes, [(Offset(420, 445), 45, 45), (Offset(645, 445), 45, 45)]),
+      (BodyPart.ears, [(Offset(160, 410), 150, 200), (Offset(850, 420), 140, 200)]),
+      (BodyPart.feet, [(Offset(255, 895), 80, 90), (Offset(780, 895), 80, 90), (Offset(445, 960), 80, 35), (Offset(605, 960), 80, 35)]),
+      (BodyPart.head, [(Offset(510, 390), 210, 190)]),
+      (BodyPart.belly, [(Offset(510, 800), 170, 140)]),
+    ],
+  ),
 };
 
 /// Decoded pictures, loaded once at start-up.
