@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:talkypals/ads/ad_config.dart';
+import 'package:talkypals/core/more_apps.dart';
 import 'package:talkypals/core/pets.dart';
 import 'package:talkypals/pets/pet_painters.dart';
 import 'package:talkypals/pets/toon.dart';
@@ -134,6 +135,17 @@ void main() {
         expect(q.options.where((o) => o == q.answer).length, 1);
         expect(q.answer, greaterThanOrEqualTo(6));
       }
+    });
+  });
+
+  group('more from HomiLabs', () {
+    test('Play links are tagged with this app as the source', () {
+      expect(
+        playLink('com.homilabs.tinytunes'),
+        'https://play.google.com/store/apps/details?id=com.homilabs.tinytunes'
+        '&referrer=utm_source%3Dtalkypals%26utm_medium%3Dapp%26utm_campaign%3Dcrosspromo',
+      );
+      expect(moreApps.map((a) => a.package), isNot(contains(ownPackage)));
     });
   });
 

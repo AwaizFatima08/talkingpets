@@ -6,10 +6,12 @@ import 'package:url_launcher/url_launcher.dart';
 import '../ads/ad_config.dart';
 import '../ads/ads_service.dart';
 import '../core/app_info.dart';
+import '../core/more_apps.dart';
 import '../core/settings.dart';
 import 'privacy_screen.dart';
 
-/// Behind the parent gate: listening settings, privacy and the ad test lab.
+/// Behind the parent gate: listening settings, privacy, rating and more HomiLabs apps,
+/// and the ad test lab.
 class GrownupsScreen extends StatefulWidget {
   const GrownupsScreen({super.key});
 
@@ -48,6 +50,9 @@ class _GrownupsScreenState extends State<GrownupsScreen> {
     final now = await Permission.microphone.status;
     setState(() => _mic = now);
   }
+
+  Future<void> _openStore(String package) =>
+      launchUrl(Uri.parse(playLink(package)), mode: LaunchMode.externalApplication);
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +112,20 @@ class _GrownupsScreenState extends State<GrownupsScreen> {
           subtitle: const Text(AppInfo.contactEmail),
           onTap: () => launchUrl(Uri.parse('mailto:${AppInfo.contactEmail}?subject=${AppInfo.name}')),
         ),
+        header('Rate & more apps'),
+        ListTile(
+          key: const Key('rate-app'),
+          leading: const Icon(Icons.star_outline),
+          title: const Text('Rate this app on Google Play'),
+          onTap: () => _openStore(ownPackage),
+        ),
+        header('More from HomiLabs'),
+        for (final app in moreApps)
+          ListTile(
+            title: Text(app.name),
+            trailing: const Icon(Icons.open_in_new),
+            onTap: () => _openStore(app.package),
+          ),
         header('Ad test lab'),
         _AdLab(ads: ads),
         const SizedBox(height: 16),

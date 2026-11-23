@@ -4,5 +4,5 @@ class AppInfo {
   static const developer = 'HomiLabs';
   static const contactEmail = 'homilabs.smc@gmail.com';
   static const privacyUrl = 'https://awaizfatima08.github.io/talkingpets/privacy.html';
-  static const version = '1.0.0';
+  static const version = '1.1.1';
 }
