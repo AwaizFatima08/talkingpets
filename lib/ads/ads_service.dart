@@ -101,7 +101,7 @@ class AdsService extends ChangeNotifier {
   }
 
   void loadInterstitial() {
-    if (!initialized || _interstitial != null || _loadingInterstitial) return;
+    if (!AdConfig.interstitials || !initialized || _interstitial != null || _loadingInterstitial) return;
     _loadingInterstitial = true;
     InterstitialAd.load(
       adUnitId: AdConfig.interstitialId,

@@ -14,7 +14,7 @@ v1.0.0 (versionCode 1) built, signed and tested on a Galaxy A12 (see `docs/testi
 
 v1.1.0 (versionCode 4, 2026-11-13): 3D art for all 5 pets, puppy + elephant, homidev sounds, 3D cat launcher icon, parrot TTS lines removed, real ads. AAB in `releases/v1.1.0-4/` (build 3 superseded); store graphics via `python3 scripts/make_store_assets.py`, listing text + release notes in `docs/store-listing-v1.1.0.md`, release-check PASS, handed to Homi for upload. (v1.0.1-2 was built but never uploaded.)
 
-v1.1.1 (versionCode 5, 2026-11-23): Grown-ups screen (behind the existing parent gate) gets "Rate this app on Google Play" and "More from HomiLabs" (Tiny Tunes, Bumper Buddies, Rainbow Keys; tagged links in `lib/core/more_apps.dart`). No in-app review prompt (kids app). AAB in `releases/v1.1.1-5/`, copy in `play-uploads/2026-11-23-kids/01-talkypals/`.
+v1.1.1 (versionCode 5, 2026-11-23): Grown-ups screen (behind the existing parent gate) gets "Rate this app on Google Play" and "More from HomiLabs" (Tiny Tunes, Bumper Buddies, Rainbow Keys; tagged links in `lib/core/more_apps.dart`). No in-app review prompt (kids app). AAB in `releases/v1.1.1-5/`, copy in `play-uploads/2026-11-23-kids/01-talkypals/`. **Build 5 rejected 24 Nov 2026** (Families Policy: Ad Content). Fix: AdMob blocking controls tightened (all sensitive categories + Beauty, Dining & Nightlife, Finance, Health), interstitials off (`AdConfig.interstitials`). v1.1.1 (versionCode 6) AAB in `releases/v1.1.1-6/` for Homi to upload. See `docs/ads.md`.
 
 ## Commands
 - Tests: `flutter test test/`; device: `bash tool/run_device_tests.sh`; drawings: `flutter test tool/preview_pets_test.dart`; icons/feature graphic: `flutter test tool/make_graphics_test.dart`; SFX: `python3 scripts/make_sfx.py`.

@@ -13,6 +13,11 @@ class AdConfig {
   static const bannerId = realAds ? 'ca-app-pub-2087846699268567/3020185971' : 'ca-app-pub-3940256099942544/9214589741';
   static const interstitialId =
       realAds ? 'ca-app-pub-2087846699268567/6276904702' : 'ca-app-pub-3940256099942544/1033173712';
+  /// Full-screen interstitials on pet switches. Off since v1.1.1+6: Play
+  /// rejected build 5 under Families "Ad Content", so toddlers only see the
+  /// banner (and rewarded ads a grown-up chooses behind the parent gate).
+  static const interstitials = bool.fromEnvironment('TP_INTERSTITIALS', defaultValue: false);
+
   static const rewardedId = realAds ? 'ca-app-pub-2087846699268567/2255713305' : 'ca-app-pub-3940256099942544/5224354917';
 
   /// Hashed device IDs that always get test ads, even with the real units

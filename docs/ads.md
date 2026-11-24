@@ -7,7 +7,7 @@ TalkyPals is the in-app ads test bed. Everything ad-related lives in `lib/ads/`.
 | Format | Where | Rules |
 |---|---|---|
 | Anchored adaptive **banner** | Top of the play screen (`BannerSlot`) | Space is reserved so nothing jumps; reloads after 60 s on failure |
-| **Interstitial** | On a pet switch (`AdsService.onNaturalBreak`) | `AdPacing`: never in the first 60 s, at least 120 s apart, every 3rd switch |
+| **Interstitial** | **Off** since v1.1.1+6 (`AdConfig.interstitials`, `--dart-define=TP_INTERSTITIALS=true` to test) | Was on pet switches with `AdPacing`; removed after Play's Families "Ad Content" rejection of build 5 |
 | **Rewarded** | 🎁 button → parent gate → offer dialog → video | Reward = dress-up hats unlocked for good (`Settings.dressUpUnlocked`) |
 | UMP consent | App start (`AdsService.init`) | `tagForUnderAgeOfConsent: true`; privacy-options entry appears in Grown-ups when required |
 
@@ -37,3 +37,9 @@ Created 11 Nov 2026 on homilabs.smc@gmail.com, app "TalkyPals: Funny Talking Pet
 ## Mediation / other networks
 
 Add the adapter packages, then check they are on Google's Families self-certified list before shipping to a children's audience.
+
+## Play rejection, 24 Nov 2026 (Families Policy: Ad Content)
+
+Build 5 was rejected: "ad content not consistent with the app's content rating". The code was already child-directed with max rating G. Fixes:
+- AdMob account blocking controls (homilabs.smc): all 11 sensitive categories blocked (Politics and Religion had been allowed); general categories Beauty & Personal Care, Dining & Nightlife, Finance and Health blocked. Ad content rating stays G. These are account-wide.
+- Interstitials turned off (build 6).
